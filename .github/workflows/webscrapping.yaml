@@ -1,0 +1,24 @@
+name: run ScrappingWs.py
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  run_schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3  # Verifica o repositório
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v4  
+
+      - name: instalar os pacotes do requirements.txt
+        run: pip install -r requirements.txt
+      
+      - name: executar o script
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: python WebSrapping/ScrappingWs.py
+      
