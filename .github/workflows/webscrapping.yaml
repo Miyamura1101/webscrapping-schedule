@@ -18,7 +18,5 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: executar o script
-        env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        run: python WebSrapping/ScrappingWs.py
+        run: python ScrappingWs.py
       
